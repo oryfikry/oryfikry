@@ -10,4 +10,5 @@ Hola, I'm Irfan Fikri! 👋
 - ⚡ Fun fact: honestly no fun fact here 
 
 
-https://github-readme-stats.vercel.app/api?username=oryfikry&&show_icons=true&title_color=ffffff&icon_color=fd79a8&text_color=ffffff&bg_color=0984e3
+<img  src="https://github-readme-stats.vercel.app/api?username=oryfikry&&show_icons=true&title_color=ffffff&icon_color=fd79a8&text_color=ffffff&bg_color=0984e3
+">
