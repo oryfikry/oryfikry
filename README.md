@@ -6,7 +6,7 @@ Hola, I'm Irfan Fikri! 👋
 - 👯 I’m looking to collaborate on live
 - 🤔 I’m not looking for help with for now
 - 💬 Ask me about something 
-- 📫 How to reach me: instagram @ory_fikry
+- 📫 How to reach me: instagram @ory.fikry
 - 😄 Pronouns: Session
 - ⚡ Fun fact: honestly no fun fact here 
 
