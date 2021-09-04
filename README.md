@@ -1,10 +1,10 @@
 
 Hola, I'm Irfan Fikri! 👋
 
-- 🔭 I’m currently working on Freelance
+- 🔭 I’m currently working on one of the biggest steel makin in java island
 - 🌱 I’m currently learning Web & Flutter
 - 👯 I’m looking to collaborate on live
-- 🤔 I’m looking for the job
+- 🤔 I’m not looking for the job now
 - 💬 Ask me about something 
 - 📫 How to reach me: instagram @
 - 😄 Pronouns: Session
