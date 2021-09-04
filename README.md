@@ -1,7 +1,7 @@
 
 Hola, I'm Irfan Fikri! 👋
 
-- 🔭 I’m currently working on one of the biggest steel makin in java island
+- 🔭 I’m currently working on one of the biggest steel making in java island
 - 🌱 I’m currently learning Web & Flutter
 - 👯 I’m looking to collaborate on live
 - 🤔 I’m not looking for the job now
