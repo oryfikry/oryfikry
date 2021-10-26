@@ -1,7 +1,4 @@
-<img border: 2px solid black;
-  padding: 10px;
-  border-radius: 35px;
-  src="https://juppijuppsen.com/wp-content/uploads/2016/10/PC-slime.gif"/>
+<img src="https://juppijuppsen.com/wp-content/uploads/2016/10/PC-slime.gif"/>
   
 Hola, I'm Irfan Fikri! 👋
 
