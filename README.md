@@ -1,4 +1,8 @@
-<img src="https://juppijuppsen.com/wp-content/uploads/2016/10/PC-slime.gif"/>
+<img style="border: 2px solid red;
+  padding: 10px;
+  border-radius: 20%;"
+  src="https://juppijuppsen.com/wp-content/uploads/2016/10/PC-slime.gif"/>
+  
 Hola, I'm Irfan Fikri! 👋
 
 - 🔭 I’m currently working as web developer on one of the biggest steel making in indonesia
