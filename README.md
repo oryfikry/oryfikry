@@ -2,7 +2,7 @@
   
 Hola, I'm Irfan Fikri! 👋
 
-- 🔭 I’m currently working as web developer on one of the biggest steel making in indonesia
+- 🔭 I’m currently working as web developer on .
 - 🌱 I’m currently learning React Js & Node Js environment
 - 👯 I’m looking to collaborate on live
 - 🤔 I’m looking for the job now
