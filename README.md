@@ -4,8 +4,7 @@ Hola, I'm Irfan Fikri! 👋
 
 - 🔭 I’m currently working as web developer on .
 - 🌱 I’m currently learning React Js & Node Js environment
-- 👯 I’m looking to collaborate on live
-- 🤔 I’m looking for the job now
+- 🤔 I’m not looking for the job now
 - 💬 Ask me about something 
 - 📫 How to reach me: instagram @
 - 😄 Pronouns: Session
