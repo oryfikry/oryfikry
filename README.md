@@ -1,14 +1,12 @@
+<div align="center">
 <img src="https://juppijuppsen.com/wp-content/uploads/2016/10/PC-slime.gif"/>
-  
-Hola, I'm Irfan Fikri! 👋
+</div>
 
-- 🔭 I’m currently working as web developer on .
-- 🌱 I’m currently learning React Js & Node Js environment
-- 🤔 I’m not looking for the job now
-- 💬 Ask me about something 
-- 📫 How to reach me: instagram @
-- 😄 Pronouns: Session
-- ⚡ Fun fact: honestly no fun fact here 
+Hola, ! 👋
+
+- ⚡ !Fun fact: i passionate in javascript and bit dart
 
 
-<img src="https://github-readme-stats.vercel.app/api?username=oryfikry&&show_icons=true&title_color=ffffff&icon_color=fd79a8&text_color=ffffff&bg_color=0984e3">
+<a href="https://github.com/oryfikry/">
+   <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=oryfikry&layout=compact" alt="oryfikry's github stats"/>
+   </a>
