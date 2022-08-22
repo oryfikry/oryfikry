@@ -4,7 +4,7 @@
 
 Hola, ! 👋
 
-- ⚡ !Fun fact: i passionate in javascript and bit dart
+- ⚡ !Fun fact: ?
 
 
 <a href="https://github.com/oryfikry/">
