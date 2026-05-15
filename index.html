@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irfan Fikri — Software Engineering</title>
+    <meta name="description" content="Full-stack engineer building high-performance web architecture and multi-agent AI systems.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230A0A0A'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23FFD500'/%3E%3C/svg%3E">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+              serif: ['"Instrument Serif"', 'ui-serif', 'Georgia'],
+              mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular'],
+            },
+            colors: {
+              ink: '#0A0A0A',
+              paper: '#F6F5F0',
+              line: '#E6E3DA',
+              accent: '#FFD500',
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+        html { font-feature-settings: "ss01", "cv11"; }
+        body { font-family: 'Inter', sans-serif; }
+
+        .grid-bg {
+            background-image:
+              linear-gradient(to right, rgba(10,10,10,0.04) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(10,10,10,0.04) 1px, transparent 1px);
+            background-size: 56px 56px;
+            mask-image: radial-gradient(ellipse at top, black 30%, transparent 75%);
+            -webkit-mask-image: radial-gradient(ellipse at top, black 30%, transparent 75%);
+        }
+
+        .noise::before {
+            content: "";
+            position: fixed; inset: 0;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+            pointer-events: none;
+            opacity: 0.5;
+            z-index: 1;
+        }
+
+        .card {
+            transition: transform .35s cubic-bezier(.2,.7,.2,1), border-color .35s ease, box-shadow .35s ease;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(10,10,10,0.18);
+            box-shadow: 0 18px 40px -24px rgba(10,10,10,0.18);
+        }
+        .card .arrow { transition: transform .3s ease, opacity .3s ease; opacity: 0; transform: translate(-4px,4px); }
+        .card:hover .arrow { opacity: 1; transform: translate(0,0); }
+
+        .reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
+        .reveal.in { opacity: 1; transform: none; }
+
+        .marquee { display: flex; gap: 3rem; animation: scroll 38s linear infinite; }
+        @keyframes scroll { to { transform: translateX(-50%); } }
+
+        .live-dot { position: relative; }
+        .live-dot::after {
+            content: ""; position: absolute; inset: -4px; border-radius: 9999px;
+            background: #22c55e; opacity: .35; animation: ping 1.8s cubic-bezier(0,0,.2,1) infinite;
+        }
+        @keyframes ping { 75%, 100% { transform: scale(2); opacity: 0; } }
+
+        .link-underline {
+            background-image: linear-gradient(currentColor, currentColor);
+            background-size: 0% 1px;
+            background-position: 0 100%;
+            background-repeat: no-repeat;
+            transition: background-size .3s ease;
+        }
+        .link-underline:hover { background-size: 100% 1px; }
+
+        ::selection { background: #FFD500; color: #0A0A0A; }
+    </style>
+</head>
+<body class="bg-paper text-ink antialiased noise">
+
+<div class="fixed inset-0 grid-bg pointer-events-none z-0"></div>
+
+<!-- NAV -->
+<nav class="sticky top-0 z-40 backdrop-blur-xl bg-paper/70 border-b border-line">
+    <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+        <a href="#top" class="flex items-center gap-2 font-semibold tracking-tight">
+            <span class="w-2 h-2 bg-ink rounded-full"></span>
+            <span>Irfan Fikri</span>
+        </a>
+        <ul class="hidden md:flex items-center gap-8 text-sm text-ink/70">
+            <li><a href="#work" class="link-underline">Work</a></li>
+            <li><a href="#stack" class="link-underline">Stack</a></li>
+            <li><a href="#about" class="link-underline">About</a></li>
+            <li><a href="#contact" class="link-underline">Contact</a></li>
+        </ul>
+        <a href="#contact" class="inline-flex items-center gap-2 text-sm font-medium bg-ink text-paper px-4 py-2 rounded-full hover:bg-ink/85 transition-colors">
+            Get in touch
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+</nav>
+
+<main id="top" class="relative z-10 max-w-6xl mx-auto px-6">
+
+    <!-- HERO -->
+    <section class="pt-24 pb-20 lg:pt-32 lg:pb-28">
+        <div class="reveal">
+            <div class="inline-flex items-center gap-2.5 text-xs font-mono uppercase tracking-[0.18em] text-ink/60 mb-10">
+                <span class="relative flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full live-dot"></span></span>
+                Available for select engagements — Q3 2026
+            </div>
+
+            <h1 class="font-serif text-[clamp(3rem,9vw,7.5rem)] leading-[0.95] tracking-tight mb-8">
+                Irfan <em class="italic text-ink/80">Fikri.</em>
+            </h1>
+
+            <p class="text-lg md:text-xl text-ink/70 max-w-2xl leading-relaxed mb-10">
+                Software engineering bridging traditional web architecture with modern AI implementation —
+                high-performance full-stack applications, multi-agent systems and scalable backend infrastructure.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-3">
+                <a href="https://github.com/oryfikry" target="_blank" rel="noopener"
+                   class="group inline-flex items-center gap-2 bg-ink text-paper text-sm font-medium px-5 py-3 rounded-full hover:bg-ink/85 transition-colors">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+                    GitHub
+                    <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                </a>
+                <a href="https://oryfikry.space" target="_blank" rel="noopener"
+                   class="group inline-flex items-center gap-2 bg-accent text-ink text-sm font-medium px-5 py-3 rounded-full hover:bg-yellow-300 transition-colors">
+                    oryfikry.space
+                    <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                </a>
+                <a href="mailto:irfan.fikri@globaltix.com"
+                   class="inline-flex items-center gap-2 border border-line text-ink text-sm font-medium px-5 py-3 rounded-full hover:border-ink/40 hover:bg-white/60 transition-colors">
+                    Email
+                </a>
+            </div>
+        </div>
+
+        <!-- meta strip -->
+        <div class="reveal mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-line pt-8">
+            <div>
+                <div class="font-serif text-4xl leading-none mb-1">6<span class="text-ink/40">y</span></div>
+                <div class="text-xs font-mono uppercase tracking-wider text-ink/55">Production engineering</div>
+            </div>
+            <div>
+                <div class="font-serif text-4xl leading-none mb-1">20<span class="text-ink/40">+</span></div>
+                <div class="text-xs font-mono uppercase tracking-wider text-ink/55">Shipped systems</div>
+            </div>
+            <div>
+                <div class="font-serif text-4xl leading-none mb-1">4<span class="text-ink/40">×</span></div>
+                <div class="text-xs font-mono uppercase tracking-wider text-ink/55">Languages in stack</div>
+            </div>
+            <div>
+                <div class="font-serif text-4xl leading-none mb-1">∞</div>
+                <div class="text-xs font-mono uppercase tracking-wider text-ink/55">Curiosity</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <section class="reveal overflow-hidden border-y border-line py-6 -mx-6 px-6 mb-24 bg-white/40">
+        <div class="marquee whitespace-nowrap font-serif text-3xl md:text-4xl text-ink/85">
+            <span class="flex items-center gap-12">
+                <span>Full-Stack</span><span class="text-ink/30">✦</span>
+                <span>Multi-Agent AI</span><span class="text-ink/30">✦</span>
+                <span>RAG Architecture</span><span class="text-ink/30">✦</span>
+                <span>System Design</span><span class="text-ink/30">✦</span>
+                <span>Edge & Cloud</span><span class="text-ink/30">✦</span>
+                <span>DX First</span><span class="text-ink/30">✦</span>
+            </span>
+            <span class="flex items-center gap-12" aria-hidden="true">
+                <span>Full-Stack</span><span class="text-ink/30">✦</span>
+                <span>Multi-Agent AI</span><span class="text-ink/30">✦</span>
+                <span>RAG Architecture</span><span class="text-ink/30">✦</span>
+                <span>System Design</span><span class="text-ink/30">✦</span>
+                <span>Edge & Cloud</span><span class="text-ink/30">✦</span>
+                <span>DX First</span><span class="text-ink/30">✦</span>
+            </span>
+        </div>
+    </section>
+
+    <!-- STACK -->
+    <section id="stack" class="mb-28 reveal">
+        <div class="flex items-end justify-between mb-10">
+            <div>
+                <div class="font-mono text-xs uppercase tracking-[0.18em] text-ink/55 mb-3">§ 01 — Core Arsenal</div>
+                <h2 class="font-serif text-4xl md:text-5xl tracking-tight">Tools I reach for.</h2>
+            </div>
+            <div class="hidden md:block text-sm text-ink/55 max-w-xs text-right">
+                Pragmatic stack. Boring tech where it matters, sharp tools where it pays off.
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="card border border-line bg-white/60 rounded-2xl p-6">
+                <div class="font-mono text-[10px] uppercase tracking-widest text-ink/50 mb-4">Languages</div>
+                <ul class="space-y-2 text-[15px]">
+                    <li class="flex items-center justify-between"><span>TypeScript</span><span class="font-mono text-xs text-ink/45">primary</span></li>
+                    <li class="flex items-center justify-between"><span>Go</span><span class="font-mono text-xs text-ink/45">Echo · Gin</span></li>
+                    <li class="flex items-center justify-between"><span>C# / .NET</span><span class="font-mono text-xs text-ink/45">enterprise</span></li>
+                    <li class="flex items-center justify-between"><span>Python</span><span class="font-mono text-xs text-ink/45">AI / ML</span></li>
+                </ul>
+            </div>
+
+            <div class="card border border-line bg-white/60 rounded-2xl p-6">
+                <div class="font-mono text-[10px] uppercase tracking-widest text-ink/50 mb-4">Platforms</div>
+                <ul class="space-y-2 text-[15px]">
+                    <li class="flex items-center justify-between"><span>React · Next.js</span><span class="font-mono text-xs text-ink/45">web</span></li>
+                    <li class="flex items-center justify-between"><span>React Native</span><span class="font-mono text-xs text-ink/45">mobile</span></li>
+                    <li class="flex items-center justify-between"><span>Flutter</span><span class="font-mono text-xs text-ink/45">mobile</span></li>
+                    <li class="flex items-center justify-between"><span>Docker · CI/CD</span><span class="font-mono text-xs text-ink/45">infra</span></li>
+                </ul>
+            </div>
+
+            <div class="card border border-ink/15 bg-ink text-paper rounded-2xl p-6 relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-accent/30 blur-3xl rounded-full"></div>
+                <div class="font-mono text-[10px] uppercase tracking-widest text-paper/60 mb-4 relative">AI Specialization</div>
+                <ul class="space-y-2 text-[15px] relative">
+                    <li class="flex items-center justify-between"><span>Multi-Agent Orchestration</span><span class="font-mono text-xs text-accent">★</span></li>
+                    <li class="flex items-center justify-between"><span>RAG Architecture</span><span class="font-mono text-xs text-accent">★</span></li>
+                    <li class="flex items-center justify-between"><span>Vector Search · Embeddings</span><span class="font-mono text-xs text-paper/50">core</span></li>
+                    <li class="flex items-center justify-between"><span>LLM Tooling · Eval</span><span class="font-mono text-xs text-paper/50">core</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORK -->
+    <section id="work" class="mb-28 reveal">
+        <div class="flex items-end justify-between mb-10">
+            <div>
+                <div class="font-mono text-xs uppercase tracking-[0.18em] text-ink/55 mb-3">§ 02 — Selected Work</div>
+                <h2 class="font-serif text-4xl md:text-5xl tracking-tight">Featured repositories.</h2>
+            </div>
+            <a href="https://github.com/oryfikry" target="_blank" rel="noopener"
+               class="text-sm font-medium text-ink/70 hover:text-ink flex items-center gap-1.5 link-underline">
+                All repositories
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+            <a href="https://github.com/oryfikry" target="_blank" rel="noopener" class="card group block border border-line rounded-2xl p-7 bg-white/55 relative overflow-hidden">
+                <div class="flex items-start justify-between mb-6">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-2 h-2 rounded-full bg-[#00ADD8]"></span>
+                        <span class="font-mono text-xs uppercase tracking-wider text-ink/60">Go · Infrastructure</span>
+                    </div>
+                    <svg class="arrow w-4 h-4 text-ink/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                </div>
+                <h3 class="font-serif text-3xl tracking-tight mb-3">Vegapunk-Record</h3>
+                <p class="text-[15px] text-ink/65 leading-relaxed mb-6">
+                    Low-overhead knowledge server built from scratch. Go + Echo, SQLite, fully containerized via Docker for predictable performance.
+                </p>
+                <div class="flex items-center gap-5 text-xs font-mono text-ink/55 pt-5 border-t border-line">
+                    <span>Echo</span><span>·</span><span>SQLite</span><span>·</span><span>Docker</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/oryfikry" target="_blank" rel="noopener" class="card group block border border-line rounded-2xl p-7 bg-white/55 relative overflow-hidden">
+                <div class="absolute -top-16 -right-16 w-56 h-56 bg-accent/20 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="flex items-start justify-between mb-6 relative">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-2 h-2 rounded-full bg-[#3178C6]"></span>
+                        <span class="font-mono text-xs uppercase tracking-wider text-ink/60">TypeScript · Agents</span>
+                    </div>
+                    <svg class="arrow w-4 h-4 text-ink/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                </div>
+                <h3 class="font-serif text-3xl tracking-tight mb-3 relative">Oh-My-Expense</h3>
+                <p class="text-[15px] text-ink/65 leading-relaxed mb-6 relative">
+                    Autonomous expense management driven by multi-agent orchestration. Agents categorize, reconcile and analyze financial data with minimal hand-holding.
+                </p>
+                <div class="flex items-center gap-5 text-xs font-mono text-ink/55 pt-5 border-t border-line relative">
+                    <span>LangGraph</span><span>·</span><span>Postgres</span><span>·</span><span>Edge</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/oryfikry" target="_blank" rel="noopener" class="card group block border border-line rounded-2xl p-7 bg-white/55 relative overflow-hidden">
+                <div class="flex items-start justify-between mb-6">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-2 h-2 rounded-full bg-[#f1e05a]"></span>
+                        <span class="font-mono text-xs uppercase tracking-wider text-ink/60">JS / TS · Maps</span>
+                    </div>
+                    <svg class="arrow w-4 h-4 text-ink/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                </div>
+                <h3 class="font-serif text-3xl tracking-tight mb-3">MeowMap</h3>
+                <p class="text-[15px] text-ink/65 leading-relaxed mb-6">
+                    Scalable interactive web app pairing mapping primitives with custom illustration — built on a modern frontend stack with a responsive, accessible UI.
+                </p>
+                <div class="flex items-center gap-5 text-xs font-mono text-ink/55 pt-5 border-t border-line">
+                    <span>Mapbox</span><span>·</span><span>React</span><span>·</span><span>SVG</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/oryfikry" target="_blank" rel="noopener" class="card group block border border-line rounded-2xl p-7 bg-white/55 relative overflow-hidden">
+                <div class="flex items-start justify-between mb-6">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-2 h-2 rounded-full bg-[#3572A5]"></span>
+                        <span class="font-mono text-xs uppercase tracking-wider text-ink/60">Python · RAG</span>
+                    </div>
+                    <svg class="arrow w-4 h-4 text-ink/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                </div>
+                <h3 class="font-serif text-3xl tracking-tight mb-3">RAG-Gemini-Chatbot</h3>
+                <p class="text-[15px] text-ink/65 leading-relaxed mb-6">
+                    Retrieval-Augmented Generation system with custom data injection pipelines. Delivers context-aware answers grounded in private knowledge bases.
+                </p>
+                <div class="flex items-center gap-5 text-xs font-mono text-ink/55 pt-5 border-t border-line">
+                    <span>Gemini</span><span>·</span><span>FAISS</span><span>·</span><span>FastAPI</span>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="mb-28 reveal">
+        <div class="grid md:grid-cols-12 gap-10 items-start">
+            <div class="md:col-span-4">
+                <div class="font-mono text-xs uppercase tracking-[0.18em] text-ink/55 mb-3">§ 03 — Profile</div>
+                <h2 class="font-serif text-4xl md:text-5xl tracking-tight leading-none">
+                    A note <em class="italic">on craft.</em>
+                </h2>
+            </div>
+            <div class="md:col-span-8 text-lg leading-relaxed text-ink/75 space-y-5">
+                <p>
+                    I care about the parts that don't show up in a screenshot — type latency on a 3G phone, an
+                    SQL plan that doesn't crumble at 10× load, the API contract that ages well three teams later.
+                </p>
+                <p>
+                    Most of my time goes into the seam where classical web engineering meets AI:
+                    deterministic systems handing off cleanly to non-deterministic ones, with the right
+                    observability and fallbacks so failures are graceful, not silent.
+                </p>
+                <p class="text-ink/60 text-base font-mono">
+                    Currently based in Indonesia · Working remotely · Open to collaboration.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-line py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-ink/55">
+        <p>© 2026 Irfan Fikri. Crafted with care.</p>
+        <p class="font-mono text-xs uppercase tracking-wider">v2.0 · last updated 2026.05</p>
+    </footer>
+
+</main>
+
+<script>
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
